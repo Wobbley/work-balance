@@ -5,11 +5,6 @@
     let diffResponse = {};
 
     function getDiff() {
-        console.log(diffRequest.workspaceId)
-        console.log(diffRequest.apiKey)
-        console.log(diffRequest.startDate)
-        console.log(diffRequest.endDate)
-
         fetch('https://work-diff.azurewebsites.net/diff', {
             method: 'POST',
             body: JSON.stringify(diffRequest),
