@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d00d667-2664-45bc-aa6c-3932256f67de" name="Default Changelist" comment="" />
+    <list default="true" id="9d00d667-2664-45bc-aa6c-3932256f67de" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +24,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/build" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -32,6 +35,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="D:\Program Files\Toolbox\apps\WebStorm\ch-0\202.7660.23\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\ws\balance\public\build" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -59,7 +67,8 @@
       <option name="presentableId" value="Default" />
       <updated>1603827685154</updated>
       <workItem from="1603827686220" duration="3090000" />
-      <workItem from="1603894115501" duration="6967000" />
+      <workItem from="1603894115501" duration="7108000" />
+      <workItem from="1603958049797" duration="324000" />
     </task>
     <task id="LOCAL−00001" summary="Initial Commit">
       <created>1603915694101</created>
@@ -67,7 +76,13 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1603915694102</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="Worksapce xml">
+      <created>1603916116780</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1603916116780</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -75,37 +90,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="Worksapce xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Worksapce xml" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="473" y="185" key="CommitChangelistDialog2" timestamp="1603915693236">
+    <state x="473" y="185" key="CommitChangelistDialog2" timestamp="1603916116123">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="473" y="185" key="CommitChangelistDialog2/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603915693236" />
-    <state width="1674" height="394" key="GridCell.Tab.0.bottom" timestamp="1603915702493">
+    <state x="473" y="185" key="CommitChangelistDialog2/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603916116123" />
+    <state width="1674" height="394" key="GridCell.Tab.0.bottom" timestamp="1603916194025">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="394" key="GridCell.Tab.0.bottom/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603915702493" />
-    <state width="1674" height="394" key="GridCell.Tab.0.center" timestamp="1603915702493">
+    <state width="1674" height="394" key="GridCell.Tab.0.bottom/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603916194025" />
+    <state width="1674" height="394" key="GridCell.Tab.0.center" timestamp="1603916194025">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="394" key="GridCell.Tab.0.center/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603915702493" />
-    <state width="1674" height="394" key="GridCell.Tab.0.left" timestamp="1603915702493">
+    <state width="1674" height="394" key="GridCell.Tab.0.center/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603916194025" />
+    <state width="1674" height="394" key="GridCell.Tab.0.left" timestamp="1603916194025">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="394" key="GridCell.Tab.0.left/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603915702493" />
-    <state width="1674" height="394" key="GridCell.Tab.0.right" timestamp="1603915702493">
+    <state width="1674" height="394" key="GridCell.Tab.0.left/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603916194025" />
+    <state width="1674" height="394" key="GridCell.Tab.0.right" timestamp="1603916194025">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1674" height="394" key="GridCell.Tab.0.right/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603915702493" />
+    <state width="1674" height="394" key="GridCell.Tab.0.right/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603916194025" />
     <state x="361" y="348" key="SettingsEditor" timestamp="1603829385868">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="361" y="348" key="SettingsEditor/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603829385868" />
-    <state x="452" y="418" key="Vcs.Push.Dialog.v2" timestamp="1603915698893">
+    <state x="452" y="418" key="Vcs.Push.Dialog.v2" timestamp="1603916159634">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="452" y="418" key="Vcs.Push.Dialog.v2/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603915698893" />
+    <state x="452" y="418" key="Vcs.Push.Dialog.v2/0.0.3440.1400/1.-1440.3440.1400@0.0.3440.1400" timestamp="1603916159634" />
     <state x="490" y="326" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603829284050">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
