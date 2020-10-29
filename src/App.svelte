@@ -1,8 +1,15 @@
 <script>
     import {Input, Container, InputGroup, InputGroupAddon, InputGroupText, Button} from 'sveltestrap';
 
-    let diffRequest = {};
+    let endDatePlaceholder = new Date()
+    let startDatePlaceholder = new Date(endDatePlaceholder)
+    startDatePlaceholder.setDate(1)
+    let diffRequest = {
+        startDate: startDatePlaceholder.toISOString().substring(0, 10),
+        endDate: endDatePlaceholder.toISOString().substring(0, 10)
+    }
     let diffResponse = {};
+    let loaded = false;
 
     function getDiff() {
         fetch('https://work-diff.azurewebsites.net/diff', {
@@ -20,6 +27,7 @@
             diffResponse.loggedHours = formatTime(data.loggedHours)
             diffResponse.expectedHours = formatTime(data.expectedHours)
             diffResponse.diffHours = formatTime(data.diffHours)
+            loaded = true
         }).catch(err => {
             console.log(err)
         })
@@ -102,7 +110,7 @@
         </InputGroup>
         <InputGroup class="mb-1">
             <InputGroupAddon addonType="prepend">
-                <InputGroupText>Start Date</InputGroupText>
+                <InputGroupText>End Date</InputGroupText>
             </InputGroupAddon>
             <Input
                     type="date"
@@ -113,15 +121,17 @@
         </InputGroup>
         <Button on:click={getDiff}>Have I worked enough?</Button>
 
-    <p>
-        Expected: { diffResponse.expectedHours }
-    </p>
-    <p>
-        Logged: { diffResponse.loggedHours }
-    </p>
-    <p>
-        Diff: { diffResponse.diffHours }
-    </p>
+    {#if loaded}
+        <p>
+            Expected: { diffResponse.expectedHours }
+        </p>
+        <p>
+            Logged: { diffResponse.loggedHours }
+        </p>
+        <p>
+            Diff: { diffResponse.diffHours }
+        </p>
+    {/if}
 </Container>
 
 <style>
