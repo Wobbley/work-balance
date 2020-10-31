@@ -1,5 +1,5 @@
 <script>
-    import {Input, Container, InputGroup, InputGroupAddon, InputGroupText, Button} from 'sveltestrap';
+    import {Input, Container, InputGroup, InputGroupAddon, InputGroupText, Button, Row, Col} from 'sveltestrap';
 
     let endDatePlaceholder = new Date()
     let startDatePlaceholder = new Date(endDatePlaceholder)
@@ -8,10 +8,11 @@
         startDate: startDatePlaceholder.toISOString().substring(0, 10),
         endDate: endDatePlaceholder.toISOString().substring(0, 10)
     }
+    let loading = false;
     let diffResponse = {};
-    let loaded = false;
 
     function getDiff() {
+        loading = true
         fetch('https://work-diff.azurewebsites.net/diff', {
             method: 'POST',
             body: JSON.stringify(diffRequest),
@@ -27,7 +28,7 @@
             diffResponse.loggedHours = formatTime(data.loggedHours)
             diffResponse.expectedHours = formatTime(data.expectedHours)
             diffResponse.diffHours = formatTime(data.diffHours)
-            loaded = true
+            loading = false;
         }).catch(err => {
             console.log(err)
         })
@@ -66,72 +67,83 @@
 </script>
 
 <head>
-    <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <title>Balance</title>
+  <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <title>Balance</title>
 </head>
 
 <Container>
-        <InputGroup class="mb-1">
-            <InputGroupAddon addonType="prepend">
-                <InputGroupText>Workspace ID</InputGroupText>
-            </InputGroupAddon>
-            <Input
-                    type="text"
-                    name="workspaceId"
-                    id="workspaceId"
-                    placeholder="Enter your workspace ID"
-                    bind:value={diffRequest.workspaceId}/>
-        </InputGroup>
-        <InputGroup class="mb-1">
-            <InputGroupAddon addonType="prepend">
-                <InputGroupText>API Key</InputGroupText>
-            </InputGroupAddon>
-            <Input
-                    type="text"
-                    name="apiKey"
-                    id="apiKey"
-                    placeholder="Enter your API Key"
-                    bind:value={diffRequest.apiKey}>
-            </Input>
-        </InputGroup>
-        <InputGroup class="mb-1">
-            <InputGroupAddon addonType="prepend">
-                <InputGroupText>Start Date</InputGroupText>
-            </InputGroupAddon>
-            <Input
-                    type="date"
-                    name="startDate"
-                    id="startDate"
-                    bind:value={diffRequest.startDate}
-            />
-        </InputGroup>
-        <InputGroup class="mb-1">
-            <InputGroupAddon addonType="prepend">
-                <InputGroupText>End Date</InputGroupText>
-            </InputGroupAddon>
-            <Input
-                    type="date"
-                    name="endDate"
-                    id="endDate"
-                    bind:value={diffRequest.endDate}
-            />
-        </InputGroup>
-        <Button on:click={getDiff}>Have I worked enough?</Button>
-
-    {#if loaded}
+  <Row>
+    <Col>
+      <InputGroup class="mb-1">
+        <InputGroupAddon addonType="prepend">
+          <InputGroupText>Workspace ID</InputGroupText>
+        </InputGroupAddon>
+        <Input
+            type="text"
+            name="workspaceId"
+            id="workspaceId"
+            placeholder="Enter your workspace ID"
+            bind:value={diffRequest.workspaceId}/>
+      </InputGroup>
+      <InputGroup class="mb-1">
+        <InputGroupAddon addonType="prepend">
+          <InputGroupText>API Key</InputGroupText>
+        </InputGroupAddon>
+        <Input
+            type="text"
+            name="apiKey"
+            id="apiKey"
+            placeholder="Enter your API Key"
+            bind:value={diffRequest.apiKey}>
+        </Input>
+      </InputGroup>
+      <InputGroup class="mb-1">
+        <InputGroupAddon addonType="prepend">
+          <InputGroupText>Start Date</InputGroupText>
+        </InputGroupAddon>
+        <Input
+            type="date"
+            name="startDate"
+            id="startDate"
+            bind:value={diffRequest.startDate}
+        />
+      </InputGroup>
+      <InputGroup class="mb-1">
+        <InputGroupAddon addonType="prepend">
+          <InputGroupText>End Date</InputGroupText>
+        </InputGroupAddon>
+        <Input
+            type="date"
+            name="endDate"
+            id="endDate"
+            bind:value={diffRequest.endDate}
+        />
+      </InputGroup>
+      <Button class="mb-3" on:click={getDiff}>Have I worked enough?</Button>
+    </Col>
+  </Row>
+  <Row>
+    <Col>
+      {#if loading}
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      {:else if diffResponse.diffHours}
         <p>
-            Expected: { diffResponse.expectedHours }
+          &nbsp;&nbsp;{ diffResponse.expectedHours } (Expected)
         </p>
         <p>
-            Logged: { diffResponse.loggedHours }
+          - { diffResponse.loggedHours } (Logged)
         </p>
         <p>
-            Diff: { diffResponse.diffHours }
+          = { diffResponse.diffHours } (Diff)
         </p>
-    {/if}
+      {/if}
+    </Col>
+  </Row>
 </Container>
 
 <style>
