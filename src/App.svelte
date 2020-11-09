@@ -6,7 +6,8 @@
     startDatePlaceholder.setDate(1)
     let diffRequest = {
         startDate: startDatePlaceholder.toISOString().substring(0, 10),
-        endDate: endDatePlaceholder.toISOString().substring(0, 10)
+        endDate: endDatePlaceholder.toISOString().substring(0, 10),
+        hoursInWorkday: 8.0
     }
     let loading = false;
     let diffResponse = {};
@@ -120,6 +121,18 @@
             name="endDate"
             id="endDate"
             bind:value={diffRequest.endDate}
+        />
+      </InputGroup>
+      <InputGroup class="mb-1">
+        <InputGroupAddon addonType="prepend">
+          <InputGroupText>Hours in Workday</InputGroupText>
+        </InputGroupAddon>
+        <Input
+            type="number"
+            step="0.5"
+            name="hoursInWorkday"
+            id="hoursInWorkday"
+            bind:value={diffRequest.hoursInWorkday}
         />
       </InputGroup>
       <Button class="mb-3" on:click={getDiff}>Have I worked enough?</Button>
