@@ -1,5 +1,7 @@
 <script>
-    import {Input, Container, InputGroup, InputGroupAddon, InputGroupText, Button, Row, Col} from 'sveltestrap';
+    import {Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row} from 'sveltestrap';
+    import {humanReadableTime} from "./utility";
+    import {fetchDiff} from "./diffClient"
 
     let endDatePlaceholder = new Date()
     let startDatePlaceholder = new Date(endDatePlaceholder)
@@ -10,60 +12,20 @@
         hoursInWorkday: 8.0
     }
     let loading = false;
-    let diffResponse = {};
+    let diffDisplay = {};
 
-    function getDiff() {
+    function getDiff2() {
         loading = true
-        fetch('https://work-diff.azurewebsites.net/diff', {
-            method: 'POST',
-            body: JSON.stringify(diffRequest),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            if (!res.ok) {
-                throw new Error("Faaaailed!")
-            }
-            return res.json()
-        }).then(data => {
-            diffResponse.loggedHours = formatTime(data.loggedHours)
-            diffResponse.expectedHours = formatTime(data.expectedHours)
-            diffResponse.diffHours = formatTime(data.diffHours)
-            loading = false;
-        }).catch(err => {
-            console.log(err)
-        })
-    }
-
-    function formatTime(hoursAsDecimal) {
-        // Check sign of given hoursAsDecimal
-        var sign = (hoursAsDecimal >= 0) ? 1 : -1;
-
-        // Set positive value of hoursAsDecimal of sign negative
-        hoursAsDecimal = hoursAsDecimal * sign;
-
-        // Separate the int from the decimal part
-        var hour = Math.floor(hoursAsDecimal);
-        var decpart = hoursAsDecimal - hour;
-
-        var min = 1 / 60;
-        // Round to nearest minute
-        decpart = min * Math.round(decpart / min);
-
-        var minute = Math.floor(decpart * 60) + '';
-
-        // Add padding if need
-        if (minute.length < 2) {
-            minute = '0' + minute;
-        }
-
-        // Add Sign in final result
-        sign = sign == 1 ? '' : '-';
-
-        // Concat hours and minutes
-        let time = sign + hour + ':' + minute;
-
-        return time;
+        fetchDiff(diffRequest)
+            .then(diffData => {
+                diffDisplay.loggedHours = humanReadableTime(diffData.loggedHours)
+                diffDisplay.expectedHours = humanReadableTime(diffData.expectedHours)
+                diffDisplay.diffHours = humanReadableTime(diffData.diffHours)
+                loading = false;
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 </script>
 
@@ -135,7 +97,7 @@
             bind:value={diffRequest.hoursInWorkday}
         />
       </InputGroup>
-      <Button class="mb-3" on:click={getDiff}>Have I worked enough?</Button>
+      <Button class="mb-3" on:click={getDiff2}>Have I worked enough?</Button>
     </Col>
   </Row>
   <Row>
@@ -144,15 +106,15 @@
         <div class="spinner-border text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>
-      {:else if diffResponse.diffHours}
+      {:else if diffDisplay.diffHours}
         <p>
-          &nbsp;&nbsp;{ diffResponse.expectedHours } (Expected)
+          &nbsp;&nbsp;{ diffDisplay.expectedHours } (Expected)
         </p>
         <p>
-          - { diffResponse.loggedHours } (Logged)
+          - { diffDisplay.loggedHours } (Logged)
         </p>
         <p>
-          = { diffResponse.diffHours } (Diff)
+          = { diffDisplay.diffHours } (Diff)
         </p>
       {/if}
     </Col>
