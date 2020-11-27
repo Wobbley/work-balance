@@ -56,7 +56,7 @@
           <InputGroupText>API Key</InputGroupText>
         </InputGroupAddon>
         <Input
-            type="text"
+            type="password"
             name="apiKey"
             id="apiKey"
             placeholder="Enter your API Key"
