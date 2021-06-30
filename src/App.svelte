@@ -9,7 +9,7 @@
     let diffRequest = {
         startDate: startDatePlaceholder.toISOString().substring(0, 10),
         endDate: endDatePlaceholder.toISOString().substring(0, 10),
-        hoursInWorkday: 8.0
+        hoursInWorkday: 7.5
     }
     let loading = false;
     let diffDisplay = {};
