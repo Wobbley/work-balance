@@ -1,5 +1,5 @@
 # Work Balance
-Helps me figure out how much I have worked versus the standard work hours. Uses the work-diff backend.
+Helps me figure out how much I have worked versus the standard work hours. Uses the [work-diff Lambda](https://github.com/Wobbley/work-diff-function).
 
 
 ## Get started
